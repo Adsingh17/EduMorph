@@ -47,4 +47,5 @@ Each microservice in our LMS has a dedicated Dockerfile, which defines the envir
 To start a service, build the Docker image using the Dockerfile and run the container. Ensure Docker is installed and running on your system. For example, to start the exam-service:
 
 `docker build -t exam-service`
+
 `docker run -d -p [Your Desired Port]:[Service Port] exam-service`
