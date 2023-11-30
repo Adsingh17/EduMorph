@@ -27,7 +27,7 @@ We have a Docker setup to manage MySQL instances for different services using Do
 
 Each service runs a MySQL instance on a separate port and has its own volume for data persistence.
 
-## Starting the Docker Containers
+## Starting the MySQL Containers
 To start the MySQL instances, run the following command in the directory containing the docker-compose.yml file:
 
 `docker-compose up -d`
@@ -37,9 +37,14 @@ This will start the MySQL instances in detached mode.
 ## Starting the Backend Services
 Certain services must be started before others to ensure proper registration and configuration.
 
-Start config-server and discovery-server before other services.
-Run the following command in their respective directories:
+Start config-server and discovery-server before other services. Then start the api-gateway. After the above services are up, start auth-service, exam-server, faculty-server, and subject-server.
 
-`mvn spring-boot:run`
+EduMorph utilizes a microservices architecture, and each microservice is containerized using Docker. Additionally, service-specific configurations are managed through YAML files located in the conf folder.
 
-Then start the api-gateway. After the above services are up, start auth-service, exam-server, faculty-server, and subject-server.
+Each microservice in our LMS has a dedicated Dockerfile, which defines the environment and steps to build and run the service. The Dockerfile uses a two-stage build process for efficient image creation.
+
+## Starting Services with Docker
+To start a service, build the Docker image using the Dockerfile and run the container. Ensure Docker is installed and running on your system. For example, to start the exam-service:
+
+`docker build -t exam-service`
+`docker run -d -p [Your Desired Port]:[Service Port] exam-service`
