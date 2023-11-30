@@ -3,7 +3,8 @@ version: '3'
 services:
   database-auth-dev:
     image: mysql:8.0.30-debian
-    ports: 
+    platform: linux/amd64
+    ports:
       - 3307:3306
     volumes:
       - auth-data-dev:/var/lib/mysql
@@ -13,7 +14,8 @@ services:
 
   database-faculty-dev:
     image: mysql:8.0.30-debian
-    ports: 
+    platform: linux/amd64
+    ports:
       - 3308:3306
     volumes:
       - faculty-data-dev:/var/lib/mysql
@@ -23,7 +25,8 @@ services:
 
   database-subject-dev:
     image: mysql:8.0.30-debian
-    ports: 
+    platform: linux/amd64
+    ports:
       - 3309:3306
     volumes:
       - subject-data-dev:/var/lib/mysql
@@ -33,7 +36,8 @@ services:
 
   database-exam-dev:
     image: mysql:8.0.30-debian
-    ports: 
+    platform: linux/amd64
+    ports:
       - 3310:3306
     volumes:
       - exam-data-dev:/var/lib/mysql
