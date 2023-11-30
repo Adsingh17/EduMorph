@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+
+
 
 @TestPropertySource(locations = "classpath:test.yaml")
 //@RunWith(SpringRunner.class)
@@ -18,7 +19,7 @@ public class UserDetailServiceImplTest {
     @Test
     void testLoadUserByUsername() {
         String result = userDetailsService.loadUserByUsername("aanglish@umd.edu").getPassword();
-        assert result.equals("$2a$10$E1YPtuH.jGsCw/45wnm3NuzrC2VFT14TdNf5i3kChoJd.Y8jSox6u");
+        assert result.equals("$2a$10$Pa0whWz821TZPxQqhyBu3uGMQf9vmyPq4FAKneqzz9Rm833bXqMVe");
 
         try{ result = userDetailsService.loadUserByUsername("aanglish").getPassword();}
         catch (UsernameNotFoundException e) {
@@ -29,13 +30,13 @@ public class UserDetailServiceImplTest {
         catch (UsernameNotFoundException e) {
             assert e.getMessage().equals("User not found");
         }
-        assert result.equals("$2a$10$E1YPtuH.jGsCw/45wnm3NuzrC2VFT14TdNf5i3kChoJd.Y8jSox6u");
+        assert result.equals("$2a$10$Pa0whWz821TZPxQqhyBu3uGMQf9vmyPq4FAKneqzz9Rm833bXqMVe");
 
         try{ result = userDetailsService.loadUserByUsername("admin@umd.edu").getPassword();}
         catch (UsernameNotFoundException e) {
             assert e.getMessage().equals("User not found");
         }
-        assert result.equals("$2a$10$bAAnP0n1bnjnu/gYnsFqtuzg1IGggsVEW3d3yNHdxTLFolpTtnt6m");
+        assert result.equals("$2a$10$Pa0whWz821TZPxQqhyBu3uGMQf9vmyPq4FAKneqzz9Rm833bXqMVe");
     }
 
 }
