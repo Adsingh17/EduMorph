@@ -18,7 +18,7 @@
 --
 -- Dumping data for table `address`
 --
-
+USE lms-faculty;
 LOCK TABLES `address` WRITE;
 /*!40000 ALTER TABLE `address` DISABLE KEYS */;
 INSERT INTO `address` (id, number, street, city_id) VALUES (1,4,'Portage',1),(2,90,'Summer Ridge',1),(3,50,'Tennyson',1),(4,51003,'Pepper Wood',1),(5,14,'Butternut',1),(6,3,'Dakota',1),(7,95528,'Buhler',1),(8,7,'Meadow Valley',1),(9,862,'Glacier Hill',1),(10,96143,'Dryden',1),(11,1994,'Hoffman',7),(12,2,'Marquette',8),(13,1488,'Glacier Hill',1),(14,8,'Menomonie',4),(15,7,'Westerfield',5),(16,4097,'Crest Line',7),(17,5456,'Armistice',2),(18,1382,'Little Fleur',7),(19,3,'Northwestern',8),(20,695,'Nelson',9);

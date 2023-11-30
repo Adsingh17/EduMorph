@@ -4,3 +4,5 @@ misc/
 *.jdl
 generated/
 TODO.md
+.idea/
+.vscode/
