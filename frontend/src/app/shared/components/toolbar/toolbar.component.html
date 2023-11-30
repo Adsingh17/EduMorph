@@ -1,13 +1,13 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="white">
   <mat-toolbar-row class="mat-elevation-z8 h-28">
     <a routerLink="/" class="m-auto">
-      <img src="assets/logo.png" alt="University of Toronto" />
+      <img src="assets/logo.png" alt="University of Maryland" />
     </a>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <div class="m-auto">
       <a mat-button routerLink="/about" class="md:text-lg">About</a>
-      <a mat-button routerLink="/faculties" class="md:text-lg">Faculties</a>
+      <!-- <a mat-button routerLink="/faculties" class="md:text-lg">Faculties</a> -->
       <a
         *ngIf="authService.validateRoles(['ROLE_STUDENT'], 'any')"
         mat-button
