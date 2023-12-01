@@ -1,0 +1,14 @@
+** Setup MySQL DB **
+DB Docker: docker-compose up -d
+
+** Build Docker Images For Microservices **
+Set up config server: docker build -t config-server ./backend/config-server/
+Set up API gateway server: docker build -t gateway-server ./backend/api-gateway/
+Set up discovery server: docker build -t discovery-server ./backend/discovery-server/
+Set up auth service: docker build -t auth-service ./backend/auth-service/
+Set up exam service: docker build -t exam-service ./backend/exam-service/
+Set up faculty service: docker build -t faculty-service ./backend/faculty-service/
+Set up subject service: docker build -t subject-service ./backend/subject-service/
+
+** Run Frontend Server **
+Set up frontend server: docker build -t frontend-server ./frontend/
