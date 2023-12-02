@@ -1,17 +1,10 @@
 build:
   docker:
     web: ./frontend/Dockerfile
-  config-server:
-    docker: ./backend/config-server/Dockerfile
-  gateway-server:
-    docker: ./backend/api-gateway/Dockerfile
-  discovery-server:
-    docker: ./backend/discovery-server/Dockerfile
-  auth-service:
-    docker: ./backend/auth-service/Dockerfile
-  exam-service:
-    docker: ./backend/exam-service/Dockerfile
-  faculty-service:
-    docker: ./backend/faculty-service/Dockerfile
-  subject-service:
-    docker: ./backend/subject-service/Dockerfile
+    config-server: ./backend/config-server/Dockerfile
+    gateway-server: ./backend/api-gateway/Dockerfile
+    discovery-server: ./backend/discovery-server/Dockerfile
+    auth-service: ./backend/auth-service/Dockerfile
+    exam-service: ./backend/exam-service/Dockerfile
+    faculty-service: ./backend/faculty-service/Dockerfile
+    subject-service: ./backend/subject-service/Dockerfile
