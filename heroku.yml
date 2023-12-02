@@ -1,8 +1,3 @@
 build:
   docker:
-    api-gateway: ./backend/api-gateway/Dockerfile
-    discovery-server: ./backend/discovery-server/Dockerfile
-    auth-service: ./backend/auth-service/Dockerfile
-    exam-service: ./backend/exam-service/Dockerfile
-    faculty-service: ./backend/faculty-service/Dockerfile
-    subject-service: ./backend/subject-service/Dockerfile
+    web: Dockerfile
