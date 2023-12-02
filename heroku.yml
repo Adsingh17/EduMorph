@@ -1,6 +1,5 @@
 build:
   docker:
-    web: ./frontend/Dockerfile
     api-gateway: ./backend/api-gateway/Dockerfile
     discovery-server: ./backend/discovery-server/Dockerfile
     auth-service: ./backend/auth-service/Dockerfile
