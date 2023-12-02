@@ -1,8 +1,7 @@
 build:
   docker:
     web: ./frontend/Dockerfile
-    config-server: ./backend/config-server/Dockerfile
-    gateway-server: ./backend/api-gateway/Dockerfile
+    api-gateway: ./backend/api-gateway/Dockerfile
     discovery-server: ./backend/discovery-server/Dockerfile
     auth-service: ./backend/auth-service/Dockerfile
     exam-service: ./backend/exam-service/Dockerfile
