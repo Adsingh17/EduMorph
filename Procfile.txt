@@ -1,36 +1,25 @@
-# Setup MySQL DB
-DB Docker: docker-compose up -d
+docker-compose up -d
 
-# Build and Run Docker Containers For Microservices
-Set up config server:
 docker build -t config-server ./backend/config-server/
 docker run -d config-server
 
-Set up API gateway server:
 docker build -t gateway-server ./backend/api-gateway/
 docker run -d gateway-server
 
-Set up discovery server:
 docker build -t discovery-server ./backend/discovery-server/
 docker run -d discovery-server
 
-Set up auth service:
 docker build -t auth-service ./backend/auth-service/
 docker run -d auth-service
 
-Set up exam service:
 docker build -t exam-service ./backend/exam-service/
 docker run -d exam-service
 
-Set up faculty service:
 docker build -t faculty-service ./backend/faculty-service/
 docker run -d faculty-service
 
-Set up subject service:
 docker build -t subject-service ./backend/subject-service/
 docker run -d subject-service
 
-# Build and Run Frontend Server
-Set up frontend server:
 docker build -t frontend-server ./frontend/
 docker run -d frontend-server
