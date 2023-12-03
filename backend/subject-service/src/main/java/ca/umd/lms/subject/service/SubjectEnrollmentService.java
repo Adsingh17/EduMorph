@@ -44,6 +44,9 @@ public class SubjectEnrollmentService
     }
 
     @Override
+    //Retrieves a list of SubjectEnrollmentDTO by their IDs.
+//Checks user authorities (ROLE_STUDENT or ROLE_TEACHER) to ensure proper permissions.
+//Utilizes mapMissingValues to populate missing data such as student and teacher information.
     public List<SubjectEnrollmentDTO> findById(Set<Long> ids) {
         List<SubjectEnrollment> subjectEnrollments =
                 (List<SubjectEnrollment>) repository.findAllById(ids);
@@ -85,6 +88,8 @@ public class SubjectEnrollmentService
     }
 
     @Override
+    //Maps missing values in SubjectEnrollmentDTO by fetching additional details from external services (facultyFeignClient).
+//Specifically maps students, professors, and assistants associated with the subjects in subject enrollments
     protected List<SubjectEnrollmentDTO> mapMissingValues(
             List<SubjectEnrollmentDTO> subjectEnrollments) {
         map(
@@ -107,7 +112,8 @@ public class SubjectEnrollmentService
 
         return subjectEnrollments;
     }
-
+//Retrieves subject enrollments based on student ID or subject ID, respectively.
+//Performs authorization checks to ensure that students can only view their own enrollments, and teachers can only view enrollments related to subjects they are teaching.
     public List<SubjectEnrollmentDTO> findByStudentId(Long id) {
         if (hasAuthority(ROLE_STUDENT) && !id.equals(getStudentId())) {
             throw new ForbiddenException("You are not allowed to view these subject enrollments");
@@ -186,7 +192,8 @@ public class SubjectEnrollmentService
                 .map(SubjectEnrollment::getStudentId)
                 .toList();
     }
-
+//Calculate the average grade and total ECTS for a list of student IDs.
+//Perform authorization checks based on user roles.
     public List<Double> findAverageGradeByStudentId(List<Long> ids) {
         if (hasAuthority(ROLE_STUDENT) && (ids.size() > 1 || !ids.contains(getStudentId()))) {
             throw new ForbiddenException(
@@ -241,6 +248,8 @@ public class SubjectEnrollmentService
                 });
         return totalECTS;
     }
+     //Updates the grade and extra points for a subject enrollment.
+//Checks teacher authority to ensure that only authorized teachers can update grades.
 
     @Transactional
     public SubjectEnrollmentDTO updateGrade(Long id, SubjectEnrollmentDTO subjectEnrollmentDTO) {
