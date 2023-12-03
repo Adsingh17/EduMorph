@@ -51,7 +51,6 @@ public class ExamRealizationService
     }
 
     @Override
-    @Override
     // Overridden method to map missing values
     protected List<ExamRealizationDTO> mapMissingValues(List<ExamRealizationDTO> examRealizations) {
         map(
@@ -198,7 +197,6 @@ public class ExamRealizationService
 
     @Transactional
      //// Transactional method to update scores for multiple exam realizations by exam term id
-    @Transactional
     public List<ExamRealizationDTO> updateScoresByExamTermId(
             Long id, List<ExamRealizationDTO> examRealizationsDTO) {
         ExamTermDTO examTerm = examTermService.findById(Set.of(id)).get(0);
