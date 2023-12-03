@@ -6,3 +6,7 @@ generated/
 TODO.md
 .idea/
 .vscode/
+*/.DS_Store
+*/.env
+*/.env.local
+*/.env.*.local
