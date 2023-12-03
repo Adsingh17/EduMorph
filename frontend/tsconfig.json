@@ -18,7 +18,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2017",
+    "target": "es2022",
     "module": "es2020",
     "lib": [
       "es2020",
@@ -32,6 +32,9 @@
       "@shared/*": [
         "app/shared/*"
       ],
+      "file-saver-es": [
+        "@types/file-saver-es"
+      ]
     },
   },
   "angularCompilerOptions": {

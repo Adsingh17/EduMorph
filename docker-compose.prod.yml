@@ -3,6 +3,7 @@ version: '3'
 services:
   database-auth:
     image: mysql:8.0.30-debian
+    platform: linux/amd64
     ports:
       - 3307:3306
     healthcheck:
@@ -19,6 +20,7 @@ services:
 
   database-faculty:
     image: mysql:8.0.30-debian
+    platform: linux/amd64
     ports:
       - 3308:3306
     healthcheck:
@@ -35,6 +37,7 @@ services:
 
   database-subject:
     image: mysql:8.0.30-debian
+    platform: linux/amd64
     ports:
       - 3309:3306
     healthcheck:
@@ -51,6 +54,7 @@ services:
 
   database-exam:
     image: mysql:8.0.30-debian
+    platform: linux/amd64
     ports:
       - 3310:3306
     volumes:
