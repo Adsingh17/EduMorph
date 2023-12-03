@@ -1,3 +1,3 @@
 run:
-  - type: compose
-    file: docker-compose.prod.yml
+  compose:
+    file: docker-compose.yml
