@@ -11,6 +11,9 @@ import java.util.Set;
 
 @FeignClient("subject-service")
 public interface SubjectFeignClient {
+    //provides a declarative way to make HTTP requests to the "subject-service" in a Spring Cloud environment.
+// It defines methods corresponding to different endpoints in the target service, specifying the HTTP methods, paths, and expected response types.
+// This allows for a more concise and readable way of interacting with remote services compared to using RestTemplate or other HTTP client libraries.
     @GetMapping("/subjects/{id}")
     List<SubjectDTO> getSubject(@PathVariable Set<Long> id);
 

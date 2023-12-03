@@ -35,6 +35,10 @@ public class UserService extends BaseService<User, UserDetailsDTO, Long> {
     private final PasswordEncoder passwordEncoder;
 
     public UserService(
+        //The constructor is used for dependency injection, initializing the UserService with instances of various components required for user management.
+    // These components include a UserRepository for data access, a UserMapper for mapping between entities and DTOs, 
+    //a UserDetailsService for retrieving user details, a TokenGenerator for handling tokens,
+    // AuthenticationManager for user authentication, and PasswordEncoder for encoding passwords.
             UserRepository repository,
             UserMapper mapper,
             UserDetailsService userDetailsService,
@@ -51,7 +55,9 @@ public class UserService extends BaseService<User, UserDetailsDTO, Long> {
     }
 
     @Override
-    @Transactional
+    @Transactional////This method overrides the save method from the superclass BaseService.
+    // It is annotated with @Transactional, indicating that the method is transactional.
+    // It encodes the user's password, sets various account-related flags, and then delegates the saving operation to the superclass.
     public UserDetailsDTO save(UserDetailsDTO userDetailsDTO) {
         userDetailsDTO.setPassword(passwordEncoder.encode(userDetailsDTO.getPassword()));
         userDetailsDTO.setAccountNonExpired(true);
@@ -84,7 +90,7 @@ public class UserService extends BaseService<User, UserDetailsDTO, Long> {
         }
         return this.mapper.userToUserDTOList(users);
     }
-
+//This method retrieves the ID of a user by their username. If the username is not found, a NotFoundException is thrown.
     public UserDetailsDTO findByUsername(String username) throws UsernameNotFoundException {
         if (!getUsername().equals(username) && !hasAuthority(ROLE_ADMIN)) {
             throw new ForbiddenException("You are not allowed to view this user's details");
@@ -92,14 +98,16 @@ public class UserService extends BaseService<User, UserDetailsDTO, Long> {
 
         return (UserDetailsDTO) userDetailsService.loadUserByUsername(username);
     }
-
+ //This method retrieves the ID of a user by their username. If the username is not found, a NotFoundException is thrown.
     public Long findIdByUsername(String username) {
         return this.repository
                 .findByUsername(username)
                 .orElseThrow(() -> new NotFoundException("Username not found"))
                 .getId();
     }
-
+//This method handles user login. It creates a UsernamePasswordAuthenticationToken with the provided username and password, 
+    //authenticates the token using the AuthenticationManager, sets the authentication in the SecurityContextHolder, 
+    //and generates access and refresh tokens using the TokenGenerator.
     public TokensDTO login(UserDTO userDTO) {
         UsernamePasswordAuthenticationToken token =
                 new UsernamePasswordAuthenticationToken(
@@ -112,6 +120,9 @@ public class UserService extends BaseService<User, UserDetailsDTO, Long> {
                 tokenGenerator.generateRefreshToken(username));
     }
 
+//This method handles user login. It creates a UsernamePasswordAuthenticationToken with the provided username and password, 
+    //authenticates the token using the AuthenticationManager, sets the authentication in the SecurityContextHolder, 
+    //and generates access and refresh tokens using the TokenGenerator.
     public TokensDTO refresh(String refreshToken) {
         refreshToken = refreshToken.substring(BEARER_PREFIX.length());
         return new TokensDTO(tokenGenerator.refreshAccessToken(refreshToken), refreshToken);
